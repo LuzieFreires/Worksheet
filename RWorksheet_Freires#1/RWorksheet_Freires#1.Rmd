@@ -1,0 +1,181 @@
+---
+title: "RWorksheet_Freires#1"
+output: pdf_document
+date: "2024-09-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+1. a. How many data points?
+- 34 data points
+
+b. Write the R code and its output
+```{r}
+age <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29,
+35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 37, 42, 53, 41, 51, 35, 24, 33, 41.)
+points <- length(age)
+print(points)
+
+```
+2. Find the reciprocal of the values for age.
+```{r}
+rec_age <-1 /age
+print(rec_age)
+```
+3. What happen to the new_age?
+```{r}
+new_age <- c(age, 0, age)
+print(new_age)
+```
+4. Sort the values for age.
+```{r}
+age <- sort(age)
+print(age)
+```
+5. Find the minimum and maximum value for age.
+```{r}
+minimum_age <- min(age)
+maximum_age <- max(age)
+print(minimum_age)
+print(maximum_age)
+```
+6. a. How many data points?
+- 12 data points
+
+b. Write the R code and its output
+```{r}
+data <- c(2.4, 2.8, 2.1, 2.5, 2.4, 2.2, 2.5, 2.3, 2.5, 2.3, 2.4, 2.7)
+points <- length(data)
+print(points)
+
+```
+7. Generates a new vector for data where you double every value of data. 
+
+```{r}
+double_d <- data * 2
+print(double_d)
+```
+What happen to the data?
+- The data increased by double
+
+
+8. Generate a sequence for the following scenario:
+8.1 Integers from 1 to 100.
+```{r}
+integer <- seq(data)
+1:100
+```
+8.2 Numbers from 20 to 60
+```{r}
+numbers <- seq(data)
+20:60
+```
+
+8.3 Mean of numbers from 20 to 60
+```{r}
+mean_num <- mean(20:60)
+print (mean_num)
+```
+
+
+8.4 Sum of numbers from 51 to 91
+```{r}
+num <- sum(51:91)
+total <- sum(num)
+print(total)
+```
+
+8.5 Integers from 1 to 1,000
+```{r}
+seq <- 1:1000
+print(seq)
+```
+
+a. How many data points from 8.1 to 8.4?
+```{r}
+length1 <- length(seq)
+length2 <- length(numbers)
+length3 <- length(mean_num)
+length4 <- length(num)
+
+sum(length1+length2+length3+length4)
+
+```
+b. Write the R code and its output from 8.1 to 8.4
+```{r}
+seq <- seq(1:100)
+numbers <- seq(20:60)
+mean_num <-(20:60)
+num <-sum(51:91)
+```
+c. For 8.5 find only maximum data points util 10
+```{r}
+max <- 1:1000
+answer <- max(max[t <- 10])
+answer
+```
+
+9. Print a vector with the integers between 1 and 100 that are not divisible by 3, 5 and 7 using filter option.
+```{r}
+Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
+```
+10. Generate a sequence backwards of the integers from 1 to 100.
+```{r}
+backward <- seq(100, 1, by = -1)
+
+print(backward)
+```
+11. List all the natural numbers below 25 that are multiples of 3 or 5. Find the sum of these multiples.
+```{r}
+numbers <- 1:24
+multiples <- numbers[numbers %% 3 == 0 | numbers %% 5 == 0]
+print(multiples)
+
+sum <- sum(multiples)
+print(sum)
+
+```
+
+12. Statements can be grouped together using braces ‘{’ and ‘}’. A group of statements
+is sometimes called a block. Single statements are evaluated when a new line is typed
+at the end of the syntactically complete statement. Blocks are not evaluated until a
+new line is entered after the closing brace.
+
+x <- {0 + x + 5 }
+
+Describe the output
+- The output is an error.
+
+
+13. Find x[2] and x[3].
+```{r}
+score <- c(72, 86, 92, 63, 88, 89, 91, 92, 75,
+75, 77)
+x2 <- score[2]
+x3 <- score[3]
+print(x2)
+print(x3)
+```
+14. Create a vector a = c(1,2,NA,4,NA,6,7).
+a. Change the NA to 999 using the codes print(a,na.print="-999").
+```{r}
+
+a <- c(1,2,NA,4,NA,6,7)
+
+print(a, na.print = "-999")
+```
+Describe the output
+
++ the vector contains character that replaces the missing numbers. 
+
+15. A special type of function calls can appear on the left hand side of the assignment
+operator as in > class(x) <- "foo".
+```{r}
+name = readline(prompt="Input your name: ")
+age = readline(prompt="Input your age: ")
+print(paste("My name is",name, "and I am",age ,"years old."))
+print(R.version.string)
+```
