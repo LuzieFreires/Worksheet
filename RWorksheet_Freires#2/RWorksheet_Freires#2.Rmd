@@ -146,10 +146,11 @@ a. Create vectors according to the above table.
 Write the R scripts and its output.
 
 ```{r}
+rank <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25)
 celebrity <- c("Tom Cruise", "Rolling Stones", "Oprah Winfrey", "U2", "Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", " Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman", "Phil Mickelson", "J.K Rowling", "Brad Pitt", "Peter Jackson", "Dr. Phil McGraw", "Jay Lenon", "Celine Dion", "Kobe Bryant")
 pay <- c(67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 75, 25, 39, 45, 32, 40, 31)
 
-celebrity_data <- data.frame(Celebrity = celebrity, Pay = pay)
+celebrity_data <- data.frame(Rank = rank, Celebrity = celebrity, Pay = pay)
 print(celebrity_data)
 ```
 b. Modify the power ranking and pay of J.K. Rowling.
@@ -157,13 +158,12 @@ Change power ranking to 15 and pay to 90. Write the
 R scripts and its output.
 
 ```{r}
-
-celebrity_data[celebrity_data$celebrity == "J.K. Rowling", "Pay"] <- 90
-celebrity_data$Power_ranking <- 1:nrow(celebrity_data)
-celebrity_data[celebrity_data$celebrity == "J.K. Rowling", "Power_ranking"] <- 15
+rank[19] <- 15
+pay[19] <- 90
+celebrity_data <- data.frame(Rank = rank, Celebrity = celebrity, Pay = pay)
 print(celebrity_data)
-
 ```
+
 c. Create an excel file from the table above and save it
 as csv file(PowerRanking). Import the csv file into
 the RStudio. What is the R script?
@@ -199,10 +199,12 @@ print(head(hotels_data))
 ```
 b. How many dimensions does the dataset have?
 What is the R script? What is its output?
+
 ```{r}
 dimensions <- dim(hotels_data)
 print(dimensions)
 ```
+
 c. Select columns country, neighbourhood,
 price, stars, accomodation_type, and
 ratings. Write the R script.
