@@ -1,6 +1,8 @@
 ---
 title: "RWorksheet_Freires#2"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 date: "2024-09-21"
 ---
 
@@ -184,3 +186,78 @@ print(ranks)
 e. Describe its output.
 
 - The output shows the ranking and pay of top celebrities. 
+
+9. Download the Hotels-Vienna https://tinyurl.com/Hotels-Vienna
+
+a. Import the excel file into your RStudio.
+What is the Rscript?
+```{r}
+library(readxl)
+hotels_data <- read_excel("hotels-vienna.xlsx")
+print(head(hotels_data))
+
+```
+b. How many dimensions does the dataset have?
+What is the R script? What is its output?
+```{r}
+dimensions <- dim(hotels_data)
+print(dimensions)
+```
+c. Select columns country, neighbourhood,
+price, stars, accomodation_type, and
+ratings. Write the R script.
+
+```{r}
+
+class(hotels_data)
+
+selection <- hotels_data[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
+print(selection)
+```
+d. Save the data as **new.RData to your RStudio. Write the
+R script.
+```{r}
+save(selection, file = "new.RData")
+```
+
+e. Display the first six rows and last six rows of the
+new.RData. What is the R script?
+
+```{r}
+load("new.RData")
+print(head(selection))
+print(tail(selection))
+```
+
+10. Create a list of ten (10) vegetables you ate during your lifetime. If none, just list down.
+a. Write the R scripts and its output.
+```{r}
+vegetables <- c("eggplant", "cabbage", "carrot", "lettuce", "broccoli", "spinach", "potato", "red onion", "garlic", "spring onion")
+print(vegetables)
+```
+b. Add 2 additional vegetables after the last vegetables
+in the list. What is the R script and its output?
+```{r}
+vegetables <- c(vegetables, "bell pepper", "yellow onion")
+print(vegetables)
+```
+c. Add 4 additional vegetables after index 5. How many
+datapoints does your vegetable list have? What is the
+R script and its output?
+```{r}
+vegetables <- append(vegetables, c("Moringa", "Okra", "Squash", "Sweet Potato"), after = 5)
+print(vegetables)
+
+num_datapoints <- length(vegetables)
+length(vegetables)
+```
+d. Remove the vegetables in index 5, 10, and 15. How
+many vegetables were left? Write the codes and its
+output.
+```{r}
+vegetables <- vegetables[-c(5, 10, 15)]
+print(vegetables)
+
+vegetables_left <- length(vegetables)
+print(vegetables_left)
+```
