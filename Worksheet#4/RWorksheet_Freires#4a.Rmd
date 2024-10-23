@@ -79,3 +79,33 @@ summary(factor_months_vector)
 
 - My interpretation of the results of months vector is that it shows the length, class, and mode functions. wherein the length is 24, the class is character and the mode is also a character. The results of the factor months vector is showing each month and their levels. Both summary are useful in this case as it has its own function. 
 
+4. Create a vector and factor for the table below.
+
+- Note: Apply the factor function with required order of the level.
+new_order_data <- factor(factor_data,levels = c("East","West","North"))
+print(new_order_data)
+
+```{r}
+direction <- c("East", "West", "North")
+
+frequency <- c(1,4,3)
+
+data <- data.frame(direction, frequency)
+print(data)
+
+new_data <- factor(direction, levels = c("East", "West", "North"))
+print(new_data)
+```
+
+5. Enter the data below in Excel with file name = import_march.csv
+
+a. Import the excel file into the Environment Pane using read.table() function. Write the code.
+
+```{r}
+library(readxl)
+excelData <- read.table("/cloud/project/Worksheet#4/import_march.csv", header = TRUE, sep = ",")
+```
+b. View the dataset. Write the R scripts and its result.
+```{r}
+print(excelData)
+```
