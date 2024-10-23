@@ -133,4 +133,38 @@ if(num < 1 || num > 50) {
 }
 ```
 
+7. Change
 
+At ISATU University’s traditional cafeteria, snacks can only be purchased with bills. A
+long-standing rule at the concession stand is that snacks must be purchased with as few
+coins as possible. There are three types of bills: 50 pesos, 100 pesos, 200 pesos, 500 pesos,
+1000 pesos.
+
+a. Write a function that prints the minimum number of bills that must be paid, given the
+price of the snack.
+
+Input: Price of snack (a random number divisible by 50) 
+Output: Minimum number of bills needed to purchase a snack.
+
+```{r}
+min <- function() {
+  price <- as.numeric(readline(prompt = "Price of snack: "))
+  paste("price of snack is ", price)
+  
+  if (price < 50) {
+    print("Enter minimum number of bills needed to purchase a snack.")
+  } else if (price < 100) {
+    print("Minimum number of bills needed to purchase a snack is 50.")
+  } else if (price < 200) {
+    print("Minimum number of bills needed to purchase a snack is 100.")
+  } else if (price < 500) {
+    print("Minimum number of bills needed to purchase a snack is 200.")
+  } else if (price < 1000) {
+    print("Minimum number of bills needed to purchase a snack is 500.")
+  } else {
+    print("Minimum number of bills needed to purchase a snack is 1000.")
+  }
+}
+
+min()
+```
