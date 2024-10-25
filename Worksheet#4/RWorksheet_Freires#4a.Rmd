@@ -225,4 +225,48 @@ for (i in 1:nrow(data)) {
 }
 print(average)
 ```
+c. Without using the mean function, output as follows for the tests in which the average
+score was less than 80 out of 4 tests.
+Example output: The nth test was difficult.
 
+```{r}
+scores <- c(0, 0, 0, 0)
+
+for (i in 1:nrow(data)) {
+  scores[1] <- scores[1] + data$Grade1[i]
+  scores[2] <- scores[2] + data$Grade2[i]
+  scores[3] <- scores[3] + data$Grade3[i]
+  scores[4] <- scores[4] + data$Grade4[i]
+}
+
+students <- nrow(data)
+
+for (j in 1:length(scores)) {
+  average <- scores[j] / students
+  if (average < 80) {
+    cat("The", j, "th test was difficult.\n")
+  }
+}
+```
+
+d. Without using the max function, output as follows for students whose highest score for a semester exceeds 90 points.
+Example Output: Annie’s highest grade this semester is 95.
+
+```{r}
+for (i in 1:nrow(data)) {
+  grades <- as.numeric(data[i, 2:5])
+  
+
+  highest_grade <- grades[1] 
+  for (grade in grades) {
+    if (grade > highest_grade) {
+      highest_grade <- grade
+    }
+  }
+  
+  if (highest_grade > 90) {
+    cat(data$name[i], "'s highest grade this semester is", highest_grade, ".\n")
+  }
+}
+
+```
