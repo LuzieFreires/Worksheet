@@ -180,3 +180,34 @@ print(tail(versicolor_sub))
 print(tail(virginica_sub))
 
 ```
+
+
+e. Create a scatterplot of the sepal.length and sepal.width using the different
+species(setosa,versicolor,virginica). Add a title = “Iris Dataset”, subtitle = “Sepal
+width and length, labels for the x and y axis, the pch symbol and colors should be based on
+the species.
+
+```{r}
+library(ggplot2)
+data(iris)
+
+iris$Species <- as.factor(iris$Species)
+
+scatter_plot <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species)) +
+  ggtitle("Iris Dataset") + 
+  labs(subtitle = "Sepal Width and Length", x = "Sepal Length", y = "Sepal Width") + 
+  geom_point(size = 3) + 
+  scale_color_manual(values = c("setosa" = "pink", "versicolor" = "purple", "virginica" = "lightblue")) + 
+  scale_shape_manual(values = c(16, 17, 18))
+
+
+print(scatter_plot)
+```
+
+Hint: Need to convert to factors the species to store categorical variables.
+
+
+f. Interpret the result.
+
+- The results show the Sepal Width and Length of each species, The setosa has the most width than length , the versicolor has more length than width, and the virginica has the most length than width
+
