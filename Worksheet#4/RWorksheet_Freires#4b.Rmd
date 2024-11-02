@@ -211,3 +211,83 @@ f. Interpret the result.
 
 - The results show the Sepal Width and Length of each species, The setosa has the most width than length , the versicolor has more length than width, and the virginica has the most length than width
 
+
+Basic Cleaning and Transformation of Objects
+
+7. Import the alexa-file.xlsx. Check on the variations. Notice that there are extra whitespaces among black variants (Black Dot, Black Plus, Black Show, Black Spot). Also on the white variants (White Dot, White Plus, White Show, White Spot).
+
+```{r}
+library(readxl)
+alexa <- read_excel("/cloud/project/Worksheet#4/alexa_file.xlsx")
+print(alexa)
+```
+a. Rename the white and black variants by using gsub() function.
+
+Syntax:
+
+RObject$columnName <- gsub("Old Name", "New Name", RObject$columnName)
+
+Write the R scripts and show an example of the output by getting a snippet. To embed
+an image into Rmd, use the function below:
+# knitr::include_graphics("file path")
+
+```{r}
+variation <- gsub("Black Dot", "BlackDot", alexa$variation)
+variation <- gsub("Black Plus", "BlackPlus", alexa$variation)
+variation <- gsub("Black Show", "BlackShow", alexa$variation)
+variation <- gsub("Black Spot", "BlackSpot", alexa$variation)
+
+variation <- gsub("White Dot", "WhiteDot", alexa$variation)
+variation <- gsub("White Plus", "WhitePlus", alexa$variation)
+variation <- gsub("White Show", "WhiteShow", alexa$variation)
+variation <- gsub("White Spot", "WhiteSpot", alexa$variation)
+
+print(alexa)
+```
+
+```{r}
+knitr::include_graphics("alexa_snippet.png")
+```
+b. Get the total number of each variations and save it into another object. Save the
+object as variations.RData. Write the R scripts. What is its result?
+
+Hint: Use the dplyr package. Make sure to install it before loading the package.
+
+Syntax for dplyr
+
+RObject %>%
+count(RObject$columnName)
+
+```{r}
+library(dplyr)
+
+variations <- alexa %>%
+  count(alexa$variation)
+
+  save(variations, file = "/cloud/project/Worksheet#4/variations.RData")
+  load("variations.RData")
+
+  print(variations)
+```
+
+Sample Output
+
+c. From the variations.RData, create a barplot(). Complete the details of the chart which include the title, color, labels of each bar.
+
+```{r}
+load("variations.RData")
+
+variation_counts <- setNames(variations$n, variations$variation)
+
+barplot(
+  variation_counts,                     
+  main = "Count of Each Variation",      
+  col = "pink",                     
+  xlab = "Variation",                   
+  ylab = "Count",                       
+  las = 2,                             
+  names.arg = variations$variation       
+)
+
+```
+
