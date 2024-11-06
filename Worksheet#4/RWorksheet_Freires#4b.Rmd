@@ -114,9 +114,9 @@ library(ggplot2)
 
 pie(
   bills,
-  labels = labels,
+  main = "Dela Cruz Family Monthly Income",
   col = c("lightblue", "lightyellow", "gold", "brown"),
-  main = "Dela Cruz Family Monthly Income"
+  labels = labels,
 )
 
 ```
@@ -276,9 +276,20 @@ c. From the variations.RData, create a barplot(). Complete the details of the ch
 
 ```{r}
 load("variations.RData")
+library(kableExtra)
 
 variation_counts <- setNames(variations$n, variations$variation)
 
+load("variations.RData")
+
+variations_data <- data.frame(variations)
+
+kable(variations_data, col.names = c("Variation", "Total"), 
+      align = c("l", "c"))
+
+```
+
+```{r}
 barplot(
   variation_counts,                     
   main = "Count of Each Variation",      
@@ -288,6 +299,42 @@ barplot(
   las = 2,                             
   names.arg = variations$variation       
 )
-
 ```
 
+d. Create a barplot() for the black and white variations. Plot it in 1 frame, side by
+side. Complete the details of the chart.
+
+```{r}
+library(ggplot2)
+library(gridExtra)
+
+black_var <- data.frame(
+  variation = c("Black", "Black Plus", "Black Show", "Black Spot", "Black Dot"),
+  Count = c(250, 300, 200, 100, 500)
+)
+
+white_var <- data.frame(
+  variation = c("White", "White Dot", "White Plus", "White Show", "White Spot"),
+  Count = c(100, 150, 80, 90, 120)
+)
+
+plot_black <- ggplot(black_var, aes(x = variation, y = Count, fill = variation)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Black Variants", y = "Variants", x = "Total Numbers") +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text.y = element_text(size = 8)
+  )
+
+plot_white <- ggplot(white_var, aes(x = variation, y = Count, fill = variation)) +
+  geom_bar(stat = "identity") +
+  labs(title = "White Variants", y = "Variants", x = "Total Numbers") +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text.y = element_text(size = 8)  
+  )
+
+grid.arrange(plot_black, plot_white, ncol = 2)
+```
